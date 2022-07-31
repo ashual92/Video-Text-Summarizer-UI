@@ -1,7 +1,4 @@
-// import 'dart:ffi';
-// import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:test_app1/page2.dart';
 import './page2.dart';
 class Page1 extends StatelessWidget {
   const Page1 ({ Key? key }) : super(key: key);
@@ -9,97 +6,100 @@ class Page1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
       primaryColor:Colors.orange,  
       ),
     home: Page1Screen(),
     routes: {
       '/page2':(context) => Page2()
-    },
-    );
+    }
+       );
   }
 }
-
 class Page1Screen extends StatelessWidget {
   const Page1Screen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor:  Colors.blue,
-      //appBar: AppBar(
-        //backgroundColor:  Colors.transparent,
-        //elevation: 0,
-   // ),
-
-    body:
-     SafeArea(
-      child:Container(
-
-        decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Colors.blue,
-                ],
-
-              ),
-            ),
-      child:Center(
-      child: Column(
-       // mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //  mainAxisSize: MainAxisSize.min,
-        children: [  
-          Spacer(flex: 2),
+       backgroundColor: Colors.white,
+      body:
 
 
-
-
-
-          ElevatedButton(
-            onPressed: ()=>{
-               Navigator.pushNamed(context, '/page2')
-            }, 
-            child: Text('Video to Text'),
-            style: ElevatedButton.styleFrom(
-              primary:Colors.black,
-              onPrimary: Colors.white,
-              onSurface: Colors.black,
-              padding: EdgeInsets.all(10.0),
-              textStyle: TextStyle(fontSize: 30),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-        
-              ),           
-            ),
-            
+       Stack(
+          children: [
+          
+             Image.asset(
+            'assets/images/RDT1-01.jpeg',
+            width: 500,
+            height: 1000,
+            fit: BoxFit.fill,
           ),
-            Spacer(flex: 1),
-            ElevatedButton(
-            onPressed: ()=>{
-               Navigator.pushNamed(context, '/page2')
-            }, 
-            child: Text('Audio to Text'),
-            style: ElevatedButton.styleFrom(
-              primary:Colors.black,
-              onPrimary: Colors.white,
-              onSurface: Colors.black,
-              padding: EdgeInsets.all(10.0),
-               textStyle: TextStyle(fontSize: 30),     
-               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50),
-                
-               ),      
-            ),
-          ),
-             Spacer(flex: 2)
 
-        ]
-      ),
-        ),
-    ),
+
+
+     Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+       children: [
+         Container(
+          padding: EdgeInsets.fromLTRB(40, 100, 40, 40),
+          
+          child: Text('Swift helps you to easily get the summary of any video that you put into it. So don’t waste your time watching lengthy and boring lectures. Just insert the video URL and BAAAAM!!! ',
+          style: TextStyle( fontFamily:"roboto",
+                     color: Colors.white,
+                     fontSize:30,
+                     fontStyle: FontStyle.italic,
+                     
+                ),
+          textAlign: TextAlign.justify,
+          ),
+           
+         ),
+       ],
      ),
-    );
+
+
     
+        
+
+
+          Align(
+            alignment:Alignment.bottomCenter,
+            child:
+            TextButton(
+           style: TextButton.styleFrom(
+              padding: EdgeInsets.symmetric(horizontal: 40,vertical: 16),
+              textStyle: TextStyle(fontSize: 28),
+              primary: Colors.white,
+            ),
+          child: Text('>',style: TextStyle(
+                  fontFamily: "Londrina",
+                  color: Colors.grey.shade300,
+                  fontSize:80,
+                  fontWeight: FontWeight.bold,
+                ),
+                ),
+             onPressed: ()=>{
+           Navigator.pushNamed(context, '/page2') 
+          },
+           ),
+            ),
+
+
+
+
+           AnimatedPositioned(
+          top: 550,
+          left: 140,
+          height: 70,
+          child: Image.asset('assets/images/swift.png'),
+           duration: Duration(microseconds: 100))
+          ]
+             ),
+    );
   }
-}
+}      
+         
+                 
+                    

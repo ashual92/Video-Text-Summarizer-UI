@@ -1,89 +1,83 @@
-// import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import './page1.dart';
-
 void main() {
-runApp(MyApp());
-
+  runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp ({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
       primaryColor:Colors.orange,  
       ),
-    home: HomeScreen(),
-    routes: {
-      '/page1':(context) => Page1()
-    },
+       home: HomeScreen(),
+       routes: {
+        '/page1':(context) =>Page1()
+       },
     );
   }
-}
-
+  }
 class HomeScreen extends StatelessWidget {
   const HomeScreen({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-    backgroundColor: Colors.blue,
-    //appBar: AppBar(
-      //backgroundColor: Colors.transparent,
-      
-      //elevation: 0,
-      
-    //),
-    body:
-     SafeArea(
-          child: Container(
+      backgroundColor: Colors.white,
+         body:
+         Stack(
+          
+          children: [
+             Image.asset(
+            'assets/images/RDT1.jpg',
+            width: 500,
+            height: 1000,
+            fit: BoxFit.fill,
+          ),
+        
+       
             
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Colors.white,
-                  Colors.blue,
-                ],
-            
-              ),
-            ),
-            child: Center(
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Swift',style: TextStyle(
-                  color: Colors.black,
-                  fontSize:60,
+      const  Positioned.fill(child: Align(
+          alignment:Alignment.center,
+          child:
+                 Text('Swift',style: TextStyle(
+                  fontFamily: "Londrina",
+                  color: Colors.white,
+                  fontSize:80,
                   fontWeight: FontWeight.bold,
                 ),
                ),
-
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.black,
-                  shape: CircleBorder()
-                  ),
-                
-                  onPressed: ()=>{
-                    Navigator.pushNamed(context, '/page1')
-                }, 
-                child: Text('>',style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 55,
-              
-                ),
-                ),
-              
-                ),
-               ],
-
-              ),
-            ),
-          ),
         ),
-      );
+        ),
+
+
+         AnimatedPositioned(
+          top: 500,
+          left: 145,
+          height: 70,
+          child: Image.asset('assets/images/swift.png'),
+           duration: Duration(microseconds: 200))
   
+          ],
+         ),
+         floatingActionButton: FloatingActionButton(
+          onPressed: ()=>{
+           Navigator.pushNamed(context, '/page1') 
+          },
+           child: Icon(
+            Icons.arrow_forward_outlined,
+            color: Colors.white,
+         ),
+         backgroundColor: Colors.indigo.shade900,
+         ),
+    
+    );
+        
+
   }
 }
